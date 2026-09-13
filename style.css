@@ -1,0 +1,6118 @@
+/* ============================================================
+   UNDER THE SAME MOON
+   PREMIUM CINEMATIC STYLES
+   ============================================================ */
+
+
+/* ============================================================
+   1. RESET
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #010204;
+}
+
+body {
+    color: rgba(245, 248, 252, 0.94);
+
+    font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button {
+    font: inherit;
+}
+
+:root {
+    --night-black: #010204;
+    --night-deep: #03070d;
+    --night-blue: #07101a;
+    --night-mid: #0d1823;
+
+    --moon-white: #dce2e4;
+    --moon-soft: #aeb8be;
+
+    --fog-light: rgba(133, 149, 159, 0.12);
+    --fog-medium: rgba(105, 120, 132, 0.22);
+
+    --warm-light: #d7a36e;
+    --warm-soft: #8f6547;
+
+    --ambient-x: 0%;
+    --ambient-y: 0%;
+}
+
+
+
+/* ============================================================
+   2. BASE EXPERIENCE
+   ============================================================ */
+
+#experience {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            rgba(25, 39, 52, 0.1),
+            transparent 55%
+        ),
+        #010204;
+}
+
+#world {
+    position: absolute;
+    inset: -4%;
+
+    width: 108%;
+    height: 108%;
+
+    overflow: hidden;
+
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.04);
+
+    transition:
+        transform 8s cubic-bezier(.2, .7, .2, 1),
+        filter 5s ease;
+}
+
+
+
+/* ============================================================
+   3. START SCREEN
+   ============================================================ */
+
+#start-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(42, 58, 73, 0.18),
+            transparent 38%
+        ),
+        linear-gradient(
+            to bottom,
+            #020509 0%,
+            #03070c 50%,
+            #010204 100%
+        );
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 2.2s ease,
+        visibility 2.2s ease;
+}
+
+#start-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.start-atmosphere {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.start-moon-glow {
+    position: absolute;
+
+    width: 35vw;
+    height: 35vw;
+
+    min-width: 420px;
+    min-height: 420px;
+
+    left: 50%;
+    top: -12vw;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(204, 218, 226, 0.12) 0%,
+            rgba(146, 164, 176, 0.06) 25%,
+            transparent 68%
+        );
+
+    filter: blur(18px);
+}
+
+.start-cloud {
+    position: absolute;
+
+    width: 80%;
+    height: 19%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(62, 73, 84, 0.14),
+            transparent 66%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        startCloudDrift 26s linear infinite;
+}
+
+.start-cloud-one {
+    top: 8%;
+    left: -20%;
+}
+
+.start-cloud-two {
+    top: 48%;
+    left: 20%;
+
+    opacity: 0.6;
+
+    animation-duration: 38s;
+    animation-direction: reverse;
+}
+
+.start-haze {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(5, 8, 12, 0.8)
+        );
+}
+
+.start-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(88vw, 760px);
+
+    text-align: center;
+
+    transform: translateY(-1.5vh);
+}
+
+.start-eyebrow {
+    margin-bottom: 22px;
+
+    font-size: 0.68rem;
+    font-weight: 500;
+
+    letter-spacing: 0.42em;
+
+    color: rgba(217, 225, 230, 0.48);
+}
+
+.start-title {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(3.1rem, 7vw, 6.8rem);
+    font-weight: 400;
+
+    line-height: 0.93;
+
+    letter-spacing: -0.045em;
+
+    color: rgba(240, 244, 246, 0.96);
+
+    text-shadow:
+        0 0 35px rgba(174, 191, 202, 0.08);
+}
+
+.start-divider {
+    width: 38px;
+    height: 1px;
+
+    margin: 32px auto;
+
+    background:
+        rgba(226, 232, 235, 0.32);
+}
+
+.start-subtitle {
+    font-size: clamp(
+        0.9rem,
+        1.3vw,
+        1.05rem
+    );
+
+    font-weight: 300;
+
+    line-height: 1.9;
+
+    letter-spacing: 0.035em;
+
+    color: rgba(214, 221, 226, 0.58);
+}
+
+#enter-button {
+    position: relative;
+
+    margin-top: 36px;
+
+    min-width: 144px;
+
+    padding:
+        14px 27px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(226, 232, 235, 0.2);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    color:
+        rgba(233, 238, 241, 0.8);
+
+    font-size: 0.69rem;
+
+    letter-spacing: 0.35em;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        border-color 0.45s ease,
+        background 0.45s ease,
+        color 0.45s ease,
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+#enter-button:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(233, 239, 243, 0.42);
+
+    background:
+        rgba(229, 237, 242, 0.06);
+
+    color:
+        rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 18px 50px
+        rgba(0, 0, 0, 0.3);
+}
+
+#enter-button:active {
+    transform:
+        translateY(0)
+        scale(0.98);
+}
+
+.start-headphones {
+    margin-top: 18px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.18em;
+
+    text-transform: lowercase;
+
+    color:
+        rgba(206, 214, 220, 0.3);
+}
+
+
+
+/* ============================================================
+   4. LOADING
+   ============================================================ */
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    background:
+        rgba(1, 2, 4, 0.94);
+
+    transition:
+        opacity 1.4s ease,
+        visibility 1.4s ease;
+}
+
+#loading-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-line {
+    width: 26px;
+    height: 1px;
+
+    margin: 0 auto 18px;
+
+    background:
+        rgba(228, 233, 236, 0.38);
+}
+
+.loading-text {
+    font-size: 0.64rem;
+
+    letter-spacing: 0.32em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(219, 227, 232, 0.48);
+}
+
+
+
+/* ============================================================
+   5. GLOBAL SKY
+   ============================================================ */
+
+.sky {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #03070d 0%,
+            #07101a 42%,
+            #0b141d 67%,
+            #05090e 100%
+        );
+}
+
+.sky-gradient {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 53% 25%,
+            rgba(79, 100, 116, 0.12),
+            transparent 47%
+        ),
+        radial-gradient(
+            ellipse at 10% 60%,
+            rgba(32, 49, 62, 0.12),
+            transparent 45%
+        );
+}
+
+
+
+/* ============================================================
+   6. STARS
+   ============================================================ */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.stars-far {
+    opacity: 0.5;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 0 0.6px,
+            transparent 0.8px
+        );
+
+    background-size:
+        73px 81px;
+
+    background-position:
+        8px 12px;
+}
+
+.stars-near {
+    opacity: 0.54;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(228,237,242,.92) 0 0.8px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.7) 0 0.5px,
+            transparent 0.8px
+        );
+
+    background-size:
+        137px 131px,
+        91px 113px;
+
+    background-position:
+        23px 41px,
+        61px 18px;
+
+    animation:
+        subtleStars 7s ease-in-out infinite alternate;
+}
+
+
+
+/* ============================================================
+   7. MOON
+   ============================================================ */
+
+.moon-wrap {
+    position: absolute;
+
+    width: clamp(100px, 12vw, 185px);
+    aspect-ratio: 1;
+
+    right: 15%;
+    top: 12%;
+
+    transition:
+        all 10s cubic-bezier(.2,.7,.1,1);
+
+    z-index: 4;
+}
+
+.moon {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 34% 29%,
+            #eef0ec 0%,
+            #d4d7d2 31%,
+            #b5b9b7 68%,
+            #8f9697 100%
+        );
+
+    box-shadow:
+        inset -15px -11px 24px
+        rgba(38, 49, 55, 0.25),
+
+        inset 12px 10px 22px
+        rgba(255, 255, 255, 0.08),
+
+        0 0 18px
+        rgba(207, 222, 230, 0.3),
+
+        0 0 80px
+        rgba(132, 159, 176, 0.16);
+}
+
+.moon::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.35;
+
+    background:
+        radial-gradient(
+            ellipse at 27% 30%,
+            rgba(86, 96, 97, .35),
+            transparent 19%
+        ),
+        radial-gradient(
+            ellipse at 67% 58%,
+            rgba(84, 93, 94, .3),
+            transparent 22%
+        ),
+        radial-gradient(
+            ellipse at 50% 76%,
+            rgba(76, 86, 89, .25),
+            transparent 16%
+        ),
+        radial-gradient(
+            ellipse at 76% 24%,
+            rgba(90, 100, 100, .24),
+            transparent 14%
+        );
+}
+
+.moon-crater {
+    position: absolute;
+
+    border-radius: 50%;
+
+    opacity: 0.3;
+
+    background:
+        rgba(85, 95, 97, 0.24);
+
+    filter: blur(1px);
+
+    box-shadow:
+        inset 2px 2px 3px
+        rgba(45, 54, 58, 0.25);
+}
+
+.crater-one {
+    width: 18%;
+    height: 13%;
+
+    left: 18%;
+    top: 22%;
+}
+
+.crater-two {
+    width: 24%;
+    height: 18%;
+
+    right: 14%;
+    top: 38%;
+}
+
+.crater-three {
+    width: 14%;
+    height: 12%;
+
+    left: 30%;
+    bottom: 16%;
+}
+
+.crater-four {
+    width: 11%;
+    height: 9%;
+
+    right: 24%;
+    top: 15%;
+}
+
+.crater-five {
+    width: 8%;
+    height: 7%;
+
+    left: 52%;
+    top: 45%;
+}
+
+.moon-shadow {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            118deg,
+            transparent 52%,
+            rgba(20,28,34,.18) 77%,
+            rgba(3,8,12,.28) 100%
+        );
+}
+
+.moon-halo {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.moon-halo-inner {
+    inset: -40%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 218, 227, 0.12),
+            transparent 67%
+        );
+
+    filter: blur(12px);
+}
+
+.moon-halo-wide {
+    inset: -180%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150, 175, 190, 0.05),
+            transparent 60%
+        );
+
+    filter: blur(30px);
+}
+
+
+
+/* ============================================================
+   8. CLOUDS
+   ============================================================ */
+
+.cloud-layer {
+    position: absolute;
+    inset: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+
+    height: 20vh;
+    width: 65vw;
+
+    min-width: 540px;
+
+    border-radius: 50%;
+
+    filter: blur(28px);
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(82, 94, 106, 0.18),
+            rgba(36, 45, 54, 0.1) 50%,
+            transparent 72%
+        );
+}
+
+.cloud-layer-back {
+    opacity: 0.4;
+}
+
+.cloud-layer-front {
+    opacity: 0.7;
+}
+
+.cloud-back-one {
+    left: -20%;
+    top: 13%;
+
+    animation:
+        cloudDrift 55s linear infinite;
+}
+
+.cloud-back-two {
+    right: -30%;
+    top: 43%;
+
+    animation:
+        cloudDriftReverse 70s linear infinite;
+}
+
+.cloud-1 {
+    left: -35%;
+    top: 20%;
+
+    animation:
+        cloudDrift 31s linear infinite;
+}
+
+.cloud-2 {
+    left: 45%;
+    top: 9%;
+
+    width: 80vw;
+
+    animation:
+        cloudDriftReverse 42s linear infinite;
+}
+
+.cloud-3 {
+    left: -10%;
+    top: 51%;
+
+    opacity: 0.58;
+
+    animation:
+        cloudDrift 49s linear infinite;
+}
+
+.cloud-4 {
+    right: -40%;
+    top: 34%;
+
+    opacity: 0.45;
+
+    animation:
+        cloudDriftReverse 58s linear infinite;
+}
+
+.sky-haze {
+    position: absolute;
+    inset: 0;
+
+    z-index: 6;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 38%,
+            rgba(16, 26, 35, .1) 55%,
+            rgba(3, 7, 11, .5) 100%
+        );
+}
+
+
+
+/* ============================================================
+   9. SCENES
+   ============================================================ */
+
+.scene {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 6s ease,
+        visibility 6s ease;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+/* ============================================================
+   10. CITY
+   ============================================================ */
+
+#city-scene {
+    z-index: 20;
+}
+
+.city-atmospheric-glow {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 34%;
+
+    height: 36%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(104, 116, 124, 0.12),
+            transparent 62%
+        );
+
+    filter: blur(35px);
+}
+
+.city-distance-haze {
+    position: absolute;
+
+    left: -10%;
+    right: -10%;
+    bottom: 30%;
+
+    height: 33%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(69, 80, 88, 0.15),
+            transparent
+        );
+
+    filter: blur(16px);
+}
+
+.city-layer {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 35%;
+}
+
+.building {
+    position: absolute;
+
+    bottom: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(5,9,13,.95),
+            rgba(11,16,21,.98),
+            rgba(4,7,10,.96)
+        );
+
+    box-shadow:
+        inset -5px 0 10px
+        rgba(0,0,0,.35);
+}
+
+
+/* FAR BUILDINGS */
+
+.city-layer-far {
+    opacity: 0.55;
+
+    filter: blur(1.5px);
+}
+
+.far-building-1 {
+    left: -3%;
+    width: 13%;
+    height: 18vh;
+}
+
+.far-building-2 {
+    left: 9%;
+    width: 9%;
+    height: 13vh;
+}
+
+.far-building-3 {
+    left: 18%;
+    width: 14%;
+    height: 21vh;
+}
+
+.far-building-4 {
+    left: 31%;
+    width: 10%;
+    height: 16vh;
+}
+
+.far-building-5 {
+    left: 40%;
+    width: 12%;
+    height: 25vh;
+}
+
+.far-building-6 {
+    left: 51%;
+    width: 14%;
+    height: 18vh;
+}
+
+.far-building-7 {
+    left: 64%;
+    width: 8%;
+    height: 23vh;
+}
+
+.far-building-8 {
+    left: 72%;
+    width: 17%;
+    height: 15vh;
+}
+
+.far-building-9 {
+    left: 88%;
+    width: 15%;
+    height: 21vh;
+}
+
+
+/* MID BUILDINGS */
+
+.city-layer-mid {
+    bottom: 32%;
+
+    opacity: 0.87;
+}
+
+.mid-building-1 {
+    left: -2%;
+    width: 18%;
+    height: 27vh;
+}
+
+.mid-building-2 {
+    left: 14%;
+    width: 11%;
+    height: 19vh;
+}
+
+.mid-building-3 {
+    left: 24%;
+    width: 15%;
+    height: 31vh;
+}
+
+.mid-building-4 {
+    left: 62%;
+    width: 12%;
+    height: 28vh;
+}
+
+.mid-building-5 {
+    left: 73%;
+    width: 15%;
+    height: 22vh;
+}
+
+.mid-building-6 {
+    left: 87%;
+    width: 16%;
+    height: 32vh;
+}
+
+
+/* NEAR BUILDINGS */
+
+.city-layer-near {
+    bottom: 27%;
+
+    opacity: 0.98;
+}
+
+.near-building-1 {
+    left: -8%;
+    width: 20%;
+    height: 38vh;
+}
+
+.near-building-2 {
+    left: 8%;
+    width: 9%;
+    height: 29vh;
+}
+
+.near-building-3 {
+    right: 7%;
+    width: 12%;
+    height: 36vh;
+}
+
+.near-building-4 {
+    right: -8%;
+    width: 18%;
+    height: 43vh;
+}
+
+
+
+/* WINDOWS */
+
+.window-light {
+    position: absolute;
+
+    width: 2px;
+    height: 3px;
+
+    border-radius: 1px;
+
+    background:
+        rgba(206, 169, 114, 0.52);
+
+    box-shadow:
+        0 0 6px
+        rgba(206,169,114,.16);
+}
+
+.mid-building-1 .w1 {
+    left: 31%;
+    top: 19%;
+}
+
+.mid-building-1 .w2 {
+    right: 20%;
+    top: 54%;
+}
+
+.mid-building-2 .w1 {
+    left: 62%;
+    top: 28%;
+}
+
+.mid-building-3 .w1 {
+    left: 22%;
+    top: 18%;
+}
+
+.mid-building-3 .w2 {
+    left: 55%;
+    top: 43%;
+}
+
+.mid-building-3 .w3 {
+    left: 76%;
+    top: 66%;
+}
+
+.mid-building-5 .w1 {
+    left: 25%;
+    top: 32%;
+}
+
+.mid-building-5 .w2 {
+    right: 22%;
+    top: 52%;
+}
+
+
+
+/* ============================================================
+   11. ROAD
+   ============================================================ */
+
+.road-ground {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 41%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #090d11 0%,
+            #070a0d 34%,
+            #020305 100%
+        );
+}
+
+.road {
+    position: absolute;
+
+    left: 50%;
+    bottom: -4%;
+
+    width: 68%;
+    height: 48%;
+
+    transform:
+        translateX(-50%)
+        perspective(600px)
+        rotateX(61deg);
+
+    transform-origin: bottom center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            #030506,
+            #0a0e11 30%,
+            #10161a 50%,
+            #080c0f 72%,
+            #020405
+        );
+
+    box-shadow:
+        inset 0 10px 20px
+        rgba(96, 111, 122, 0.04);
+}
+
+.road::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.7;
+
+    background:
+        repeating-linear-gradient(
+            89deg,
+            rgba(255,255,255,.008) 0 2px,
+            transparent 2px 10px
+        );
+}
+
+.road-sheen {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            104deg,
+            transparent 14%,
+            rgba(111,131,144,.05) 37%,
+            rgba(167,185,195,.08) 50%,
+            rgba(94,111,121,.035) 67%,
+            transparent 84%
+        );
+}
+
+.road-center-glow {
+    position: absolute;
+
+    left: 40%;
+    top: 0;
+
+    width: 20%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(156, 170, 178, 0.03),
+            rgba(164, 180, 189, 0.09),
+            transparent
+        );
+
+    filter: blur(10px);
+}
+
+.road-line {
+    position: absolute;
+
+    left: 49.8%;
+
+    width: 3px;
+
+    background:
+        rgba(176, 180, 175, 0.22);
+
+    filter: blur(0.5px);
+}
+
+.road-line-one {
+    top: 8%;
+    height: 14%;
+}
+
+.road-line-two {
+    top: 39%;
+    height: 18%;
+}
+
+.road-line-three {
+    top: 74%;
+    height: 24%;
+}
+
+
+
+/* PUDDLES */
+
+.road-puddle {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(3px);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(133,153,165,.11),
+            transparent 70%
+        );
+}
+
+.puddle-one {
+    width: 24%;
+    height: 5%;
+
+    left: 9%;
+    top: 60%;
+}
+
+.puddle-two {
+    width: 19%;
+    height: 4%;
+
+    right: 12%;
+    top: 44%;
+}
+
+.puddle-three {
+    width: 35%;
+    height: 7%;
+
+    left: 33%;
+    top: 79%;
+}
+
+
+
+/* ============================================================
+   12. STREET LIGHTS
+   ============================================================ */
+
+.street-light {
+    position: absolute;
+
+    bottom: 21%;
+
+    width: 120px;
+    height: 48vh;
+
+    opacity: 0.85;
+}
+
+.light-left {
+    left: 13%;
+}
+
+.light-right {
+    right: 12%;
+
+    transform:
+        scaleX(-1)
+        scale(0.83);
+
+    opacity: 0.6;
+}
+
+.street-light-pole {
+    position: absolute;
+
+    width: 3px;
+    height: 85%;
+
+    left: 50%;
+    bottom: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #11181d,
+            #28323a,
+            #0b1014
+        );
+}
+
+.street-light-arm {
+    position: absolute;
+
+    width: 48px;
+    height: 3px;
+
+    left: 50%;
+    top: 13%;
+
+    transform:
+        rotate(-10deg);
+
+    transform-origin: left center;
+
+    background:
+        #1b2329;
+}
+
+.street-light-lamp {
+    position: absolute;
+
+    width: 14px;
+    height: 6px;
+
+    left: calc(50% + 42px);
+    top: 11%;
+
+    border-radius: 2px 5px 5px 2px;
+
+    background:
+        #a89b7d;
+
+    box-shadow:
+        0 0 11px
+        rgba(208,187,144,.45);
+}
+
+.street-light-glow {
+    position: absolute;
+
+    width: 160px;
+    height: 190px;
+
+    left: calc(50% - 18px);
+    top: 6%;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(196,174,133,.16),
+            transparent 65%
+        );
+
+    filter: blur(16px);
+}
+
+.street-light-reflection {
+    position: absolute;
+
+    width: 35px;
+    height: 34vh;
+
+    left: 50%;
+    bottom: -24%;
+
+    transform:
+        translateX(-50%)
+        skewX(-7deg);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(193,170,126,.13),
+            transparent 75%
+        );
+
+    filter: blur(8px);
+}
+
+
+
+/* ============================================================
+   13. CAR LIGHTS
+   ============================================================ */
+
+.distant-car {
+    position: absolute;
+
+    bottom: 30.5%;
+
+    width: 36px;
+    height: 10px;
+
+    display: flex;
+    justify-content: space-between;
+
+    filter: blur(0.8px);
+}
+
+.car-one {
+    left: 46%;
+}
+
+.car-two {
+    left: 55%;
+
+    bottom: 31.2%;
+
+    transform: scale(0.6);
+
+    opacity: 0.6;
+}
+
+.car-light {
+    width: 5px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        #c9c2ae;
+
+    box-shadow:
+        0 0 9px
+        rgba(220,215,195,.8);
+}
+
+.car-reflection {
+    position: absolute;
+
+    left: 3px;
+    top: 7px;
+
+    width: 30px;
+    height: 45px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(197,191,173,.16),
+            transparent
+        );
+
+    filter: blur(5px);
+}
+
+.roadside {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 25%;
+    height: 38%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(2,4,5,.92) 40%
+        );
+}
+
+.roadside-left {
+    left: 0;
+}
+
+.roadside-right {
+    right: 0;
+}
+
+.road-mist {
+    position: absolute;
+
+    bottom: 20%;
+
+    width: 65%;
+    height: 16%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(122,137,146,.11),
+            transparent 69%
+        );
+
+    filter: blur(24px);
+}
+
+.road-mist-one {
+    left: -10%;
+
+    animation:
+        mistMove 18s ease-in-out infinite alternate;
+}
+
+.road-mist-two {
+    right: -15%;
+
+    animation:
+        mistMove 24s ease-in-out infinite alternate-reverse;
+}
+
+.city-lens-haze {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            transparent 28%,
+            rgba(2,4,6,.15) 77%
+        );
+}
+
+
+
+/* ============================================================
+   14. FOREST
+   ============================================================ */
+
+#forest-scene {
+    z-index: 20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(3,7,11,.15),
+            rgba(2,6,9,.4) 50%,
+            rgba(1,3,4,.92)
+        );
+}
+
+.forest-moonlight {
+    position: absolute;
+
+    width: 70%;
+    height: 100%;
+
+    left: 25%;
+    top: -10%;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(166,186,198,.09),
+            transparent 48%
+        );
+
+    filter: blur(16px);
+}
+
+.forest-backdrop {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 29%;
+
+    height: 50%;
+}
+
+.pine-ridge {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 120%;
+    height: 72%;
+
+    background:
+        repeating-linear-gradient(
+            78deg,
+            transparent 0 4.3%,
+            rgba(3,8,10,.74) 4.3% 7.2%,
+            transparent 7.2% 10%
+        );
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 66%,
+            4% 43%,
+            8% 72%,
+            12% 34%,
+            16% 68%,
+            20% 39%,
+            25% 70%,
+            29% 29%,
+            34% 64%,
+            38% 36%,
+            43% 69%,
+            47% 40%,
+            52% 71%,
+            56% 31%,
+            61% 68%,
+            66% 42%,
+            71% 72%,
+            76% 35%,
+            81% 66%,
+            86% 38%,
+            91% 71%,
+            96% 46%,
+            100% 65%,
+            100% 100%
+        );
+}
+
+.ridge-one {
+    opacity: 0.45;
+
+    filter: blur(2px);
+}
+
+.ridge-two {
+    bottom: -8%;
+
+    opacity: 0.7;
+
+    transform:
+        translateX(-7%)
+        scale(1.08);
+}
+
+
+
+/* PINE SILHOUETTES */
+
+.forest-layer {
+    position: absolute;
+    inset: 0;
+}
+
+.pine {
+    position: absolute;
+
+    bottom: 22%;
+
+    width: 9vw;
+    min-width: 60px;
+
+    height: 48vh;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 5%,
+            rgba(3,9,11,.9) 30%,
+            rgba(1,5,7,.98) 100%
+        );
+
+    clip-path:
+        polygon(
+            50% 0,
+            44% 18%,
+            56% 18%,
+            38% 32%,
+            62% 30%,
+            31% 48%,
+            68% 44%,
+            22% 65%,
+            76% 60%,
+            15% 83%,
+            84% 76%,
+            57% 100%,
+            43% 100%
+        );
+}
+
+.forest-far {
+    opacity: 0.48;
+
+    filter: blur(1.4px);
+}
+
+.pine-far-1 {
+    left: -1%;
+    transform: scale(.82);
+}
+
+.pine-far-2 {
+    left: 14%;
+    transform: scale(.63);
+}
+
+.pine-far-3 {
+    left: 27%;
+    transform: scale(.79);
+}
+
+.pine-far-4 {
+    left: 45%;
+    transform: scale(.58);
+}
+
+.pine-far-5 {
+    left: 59%;
+    transform: scale(.77);
+}
+
+.pine-far-6 {
+    left: 75%;
+    transform: scale(.67);
+}
+
+.pine-far-7 {
+    right: -1%;
+    transform: scale(.91);
+}
+
+
+
+/* TREE TRUNKS */
+
+.trunk {
+    position: absolute;
+
+    bottom: 11%;
+
+    width: clamp(7px, .7vw, 12px);
+    height: 77vh;
+
+    border-radius: 50% 50% 0 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #020506,
+            #12191c 43%,
+            #030607 70%
+        );
+
+    box-shadow:
+        inset -2px 0 3px
+        rgba(0,0,0,.8);
+}
+
+.trunk-mid-1 {
+    left: 7%;
+    transform: rotate(-2deg);
+}
+
+.trunk-mid-2 {
+    left: 25%;
+    height: 67vh;
+    transform: rotate(1deg);
+}
+
+.trunk-mid-3 {
+    right: 22%;
+    height: 75vh;
+}
+
+.trunk-mid-4 {
+    right: 6%;
+    height: 82vh;
+    transform: rotate(2deg);
+}
+
+.trunk-mid-5 {
+    left: 53%;
+    height: 62vh;
+    opacity: .7;
+}
+
+.branch {
+    position: absolute;
+
+    height: 4px;
+
+    border-radius: 100%;
+
+    background:
+        #020506;
+
+    transform-origin: left center;
+}
+
+.branch-a {
+    width: 110px;
+
+    left: 3px;
+    top: 24%;
+
+    transform:
+        rotate(-21deg);
+}
+
+.branch-b {
+    width: 85px;
+
+    left: -77px;
+    top: 42%;
+
+    transform:
+        rotate(18deg);
+}
+
+.branch-c {
+    width: 120px;
+
+    left: 0;
+    top: 58%;
+
+    transform:
+        rotate(13deg);
+}
+
+
+
+/* FOREST GROUND */
+
+.forest-ground {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 36%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(46,57,63,.16),
+            transparent 40%
+        ),
+        linear-gradient(
+            to bottom,
+            #081012,
+            #020405 72%
+        );
+}
+
+.forest-path {
+    position: absolute;
+
+    left: 50%;
+    bottom: -15%;
+
+    width: 40%;
+    height: 140%;
+
+    transform:
+        translateX(-50%)
+        perspective(500px)
+        rotateX(66deg);
+
+    transform-origin: bottom center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(10,15,16,.2),
+            rgba(49,59,63,.18),
+            rgba(12,17,18,.2)
+        );
+
+    filter: blur(.4px);
+}
+
+.path-highlight {
+    position: absolute;
+
+    left: 35%;
+    top: 0;
+
+    width: 30%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(159,174,181,.06),
+            rgba(95,108,114,.03),
+            transparent
+        );
+}
+
+.path-puddle {
+    position: absolute;
+
+    height: 4%;
+    width: 35%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(129,147,156,.08);
+
+    filter: blur(3px);
+}
+
+.path-puddle-one {
+    left: 10%;
+    top: 46%;
+}
+
+.path-puddle-two {
+    right: 6%;
+    top: 68%;
+}
+
+
+
+/* FOREGROUND TREE SILHOUETTES */
+
+.foreground-tree {
+    position: absolute;
+
+    bottom: -8%;
+
+    width: 5vw;
+    min-width: 48px;
+
+    height: 120vh;
+
+    background:
+        linear-gradient(
+            to right,
+            #010203,
+            #06090a 50%,
+            #010203
+        );
+
+    filter: blur(1px);
+}
+
+.foreground-tree-left {
+    left: -1.5%;
+
+    transform: rotate(-1deg);
+}
+
+.foreground-tree-right {
+    right: -1%;
+
+    transform: rotate(2deg);
+}
+
+.foreground-branch {
+    position: absolute;
+
+    width: 190px;
+    height: 8px;
+
+    background:
+        #010203;
+
+    border-radius: 100%;
+
+    transform-origin: left center;
+}
+
+.foreground-tree-left .branch-one {
+    top: 22%;
+    left: 30px;
+
+    transform: rotate(-18deg);
+}
+
+.foreground-tree-left .branch-two {
+    top: 45%;
+    left: 20px;
+
+    transform: rotate(12deg);
+}
+
+.foreground-tree-left .branch-three {
+    top: 67%;
+    left: 22px;
+
+    transform: rotate(-9deg);
+}
+
+.foreground-tree-right .foreground-branch {
+    right: 30px;
+
+    transform-origin: right center;
+}
+
+.foreground-tree-right .branch-one {
+    top: 18%;
+
+    transform: rotate(19deg);
+}
+
+.foreground-tree-right .branch-two {
+    top: 41%;
+
+    transform: rotate(-15deg);
+}
+
+.foreground-tree-right .branch-three {
+    top: 70%;
+
+    transform: rotate(10deg);
+}
+
+
+
+/* FOREST FOG */
+
+.forest-floor-fog {
+    position: absolute;
+
+    bottom: 9%;
+
+    width: 75%;
+    height: 17%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(118,132,140,.11),
+            transparent 68%
+        );
+
+    filter: blur(26px);
+}
+
+.fog-strip-one {
+    left: -13%;
+
+    animation:
+        floorFog 17s ease-in-out infinite alternate;
+}
+
+.fog-strip-two {
+    right: -18%;
+
+    animation:
+        floorFog 24s ease-in-out infinite alternate-reverse;
+}
+
+
+
+/* ============================================================
+   15. CABIN EXTERIOR
+   ============================================================ */
+
+#cabin-scene {
+    z-index: 20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(3,7,11,.1),
+            rgba(2,5,7,.88)
+        );
+}
+
+.cabin-background-trees {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.7;
+}
+
+.cabin-tree {
+    position: absolute;
+
+    bottom: 13%;
+
+    width: 9vw;
+    min-width: 70px;
+
+    height: 62vh;
+
+    background:
+        #020506;
+
+    clip-path:
+        polygon(
+            50% 0,
+            41% 20%,
+            59% 19%,
+            34% 37%,
+            66% 35%,
+            26% 57%,
+            74% 52%,
+            16% 77%,
+            84% 69%,
+            58% 100%,
+            42% 100%
+        );
+}
+
+.cabin-tree-one {
+    left: 4%;
+}
+
+.cabin-tree-two {
+    left: 20%;
+    transform: scale(.7);
+}
+
+.cabin-tree-three {
+    right: 24%;
+    transform: scale(.78);
+}
+
+.cabin-tree-four {
+    right: 6%;
+}
+
+.cabin-tree-five {
+    left: 46%;
+    transform: scale(.56);
+    opacity: .55;
+}
+
+.cabin-ground {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 31%;
+
+    background:
+        radial-gradient(
+            ellipse at center top,
+            rgba(83,71,57,.05),
+            transparent 34%
+        ),
+        linear-gradient(
+            to bottom,
+            #081011,
+            #020404 80%
+        );
+}
+
+.cabin-ground-mist {
+    position: absolute;
+
+    left: -15%;
+    bottom: 12%;
+
+    width: 130%;
+    height: 20%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(112,126,134,.09),
+            transparent 70%
+        );
+
+    filter: blur(26px);
+}
+
+.cabin-wrap {
+    position: absolute;
+
+    width: min(48vw, 650px);
+    height: min(52vh, 500px);
+
+    left: 50%;
+    bottom: 13%;
+
+    transform: translateX(-50%);
+}
+
+.cabin {
+    position: absolute;
+
+    left: 12%;
+    right: 12%;
+    bottom: 0;
+
+    height: 63%;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #161817 0 7px,
+            #0d1010 7px 10px,
+            #171a18 10px 19px
+        );
+
+    box-shadow:
+        inset 0 -40px 80px
+        rgba(0,0,0,.42),
+
+        0 30px 60px
+        rgba(0,0,0,.55);
+}
+
+.cabin-wall-texture {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.22;
+
+    background:
+        repeating-linear-gradient(
+            94deg,
+            transparent 0 25px,
+            rgba(255,255,255,.03) 25px 26px
+        );
+}
+
+.cabin-roof {
+    position: absolute;
+
+    width: 124%;
+    height: 49%;
+
+    left: -12%;
+    top: -34%;
+
+    background:
+        linear-gradient(
+            163deg,
+            #06090a,
+            #121516 40%,
+            #030506 75%
+        );
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 70%,
+            94% 78%,
+            6% 78%,
+            0 70%
+        );
+
+    filter:
+        drop-shadow(
+            0 14px 10px
+            rgba(0,0,0,.6)
+        );
+}
+
+.roof-rain-edge {
+    position: absolute;
+
+    left: 4%;
+    right: 4%;
+    bottom: 20%;
+
+    height: 1px;
+
+    background:
+        rgba(157,171,177,.13);
+
+    box-shadow:
+        0 3px 8px
+        rgba(149,164,170,.05);
+}
+
+
+
+/* CHIMNEY */
+
+.chimney {
+    position: absolute;
+
+    width: 8%;
+    height: 47%;
+
+    right: 17%;
+    top: -42%;
+
+    background:
+        linear-gradient(
+            to right,
+            #080b0c,
+            #16191a,
+            #050708
+        );
+}
+
+.chimney-smoke {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(126,135,138,.09);
+
+    filter: blur(12px);
+
+    animation:
+        smokeRise 8s ease-in-out infinite;
+}
+
+.smoke-one {
+    width: 70px;
+    height: 45px;
+
+    left: -15px;
+    top: -30px;
+}
+
+.smoke-two {
+    width: 90px;
+    height: 60px;
+
+    left: -35px;
+    top: -70px;
+
+    animation-delay: -2.4s;
+}
+
+.smoke-three {
+    width: 120px;
+    height: 75px;
+
+    left: -55px;
+    top: -120px;
+
+    animation-delay: -4.6s;
+}
+
+
+
+/* CABIN WINDOW */
+
+.cabin-window {
+    position: absolute;
+
+    width: 25%;
+    height: 42%;
+
+    left: 15%;
+    top: 27%;
+
+    overflow: hidden;
+
+    border:
+        7px solid
+        #111414;
+
+    background:
+        linear-gradient(
+            120deg,
+            #806044,
+            #d1a16d 47%,
+            #76513b
+        );
+
+    box-shadow:
+        0 0 22px
+        rgba(200,144,89,.2),
+
+        0 0 75px
+        rgba(188,130,76,.13);
+}
+
+.window-light {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(255,205,142,.9),
+            rgba(190,128,73,.4) 64%,
+            transparent
+        );
+
+    animation:
+        warmWindowFlicker 4s ease-in-out infinite alternate;
+}
+
+.window-frame {
+    position: absolute;
+
+    z-index: 3;
+
+    background:
+        #151514;
+}
+
+.window-frame-v {
+    width: 5px;
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+}
+
+.window-frame-h {
+    height: 5px;
+    left: 0;
+    right: 0;
+
+    top: 50%;
+}
+
+.window-curtain {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 31%;
+
+    opacity: .33;
+
+    background:
+        #362d28;
+}
+
+.curtain-left {
+    left: 0;
+}
+
+.curtain-right {
+    right: 0;
+}
+
+
+
+/* CABIN DOOR */
+
+.cabin-door {
+    position: absolute;
+
+    width: 21%;
+    height: 68%;
+
+    right: 17%;
+    bottom: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #111313,
+            #1c1e1c 48%,
+            #0b0d0d
+        );
+
+    border:
+        3px solid
+        #090b0b;
+}
+
+.door-panel {
+    position: absolute;
+
+    left: 13%;
+    right: 13%;
+
+    border:
+        1px solid
+        rgba(82,84,79,.15);
+}
+
+.door-panel-one {
+    top: 13%;
+    height: 31%;
+}
+
+.door-panel-two {
+    bottom: 13%;
+    height: 31%;
+}
+
+.door-handle {
+    position: absolute;
+
+    right: 10%;
+    top: 52%;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        #918069;
+
+    box-shadow:
+        0 0 3px
+        rgba(197,166,123,.24);
+}
+
+.cabin-foundation {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 10%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.2),
+            rgba(0,0,0,.55)
+        );
+}
+
+
+
+/* CABIN LIGHT SPILL */
+
+.cabin-light-spill {
+    position: absolute;
+
+    left: 8%;
+    bottom: -12%;
+
+    width: 50%;
+    height: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at center top,
+            rgba(194,139,84,.16),
+            transparent 70%
+        );
+
+    filter: blur(17px);
+
+    transform: skewX(-12deg);
+}
+
+
+
+/* PORCH */
+
+.cabin-porch {
+    position: absolute;
+
+    right: 12%;
+    bottom: -4%;
+
+    width: 34%;
+    height: 14%;
+}
+
+.porch-step {
+    position: absolute;
+
+    right: 0;
+
+    height: 35%;
+
+    background:
+        linear-gradient(
+            to right,
+            #121515,
+            #252624,
+            #0c0f0f
+        );
+}
+
+.porch-step-one {
+    width: 75%;
+
+    top: 20%;
+}
+
+.porch-step-two {
+    width: 100%;
+
+    bottom: 0;
+}
+
+.cabin-foreground-tree-left,
+.cabin-foreground-tree-right {
+    position: absolute;
+
+    bottom: -5%;
+
+    width: 5%;
+    height: 110%;
+
+    background:
+        #010203;
+
+    filter: blur(1.5px);
+}
+
+.cabin-foreground-tree-left {
+    left: -1%;
+}
+
+.cabin-foreground-tree-right {
+    right: 1%;
+}
+
+
+
+/* ============================================================
+   16. CABIN INTERIOR
+   ============================================================ */
+
+#cabin-interior {
+    z-index: 21;
+
+    background:
+        linear-gradient(
+            112deg,
+            #080706 0%,
+            #15110d 43%,
+            #070707 100%
+        );
+}
+
+.interior-wall {
+    position: absolute;
+
+    inset: 0 0 23% 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #131311 0 33px,
+            #171714 33px 35px,
+            #0d0e0d 35px 68px
+        );
+}
+
+.interior-wall::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 68% 60%,
+            rgba(173,103,52,.09),
+            transparent 36%
+        ),
+
+        linear-gradient(
+            to right,
+            rgba(0,0,0,.55),
+            transparent 35%,
+            rgba(0,0,0,.38)
+        );
+}
+
+.wood-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background:
+        rgba(89,81,67,.1);
+}
+
+.wood-line-1 { top: 12%; }
+.wood-line-2 { top: 28%; }
+.wood-line-3 { top: 44%; }
+.wood-line-4 { top: 60%; }
+.wood-line-5 { top: 76%; }
+.wood-line-6 { top: 92%; }
+
+.interior-ceiling-shadow {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 24%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.65),
+            transparent
+        );
+}
+
+
+
+/* INTERIOR WINDOW */
+
+.window-area {
+    position: absolute;
+
+    left: 10%;
+    top: 19%;
+
+    width: min(30vw, 420px);
+    height: 43vh;
+}
+
+.interior-window {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    border:
+        13px solid
+        #11110f;
+
+    box-shadow:
+        0 16px 45px
+        rgba(0,0,0,.52);
+}
+
+.interior-window-night {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #06101a,
+            #0a141c 45%,
+            #030608
+        );
+}
+
+.window-moon-glow {
+    position: absolute;
+
+    width: 80%;
+    aspect-ratio: 1;
+
+    right: -28%;
+    top: -45%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(207,220,226,.28),
+            transparent 60%
+        );
+
+    filter: blur(10px);
+}
+
+.window-tree-shadow {
+    position: absolute;
+
+    bottom: -10%;
+
+    width: 16%;
+    height: 90%;
+
+    background:
+        #010303;
+
+    opacity: .65;
+}
+
+.window-tree-one {
+    left: 12%;
+}
+
+.window-tree-two {
+    right: 14%;
+
+    height: 75%;
+}
+
+.interior-window-frame {
+    position: absolute;
+
+    z-index: 5;
+
+    background:
+        #171715;
+}
+
+.frame-vertical {
+    width: 10px;
+    height: 100%;
+
+    left: 50%;
+}
+
+.frame-horizontal {
+    height: 10px;
+    width: 100%;
+
+    top: 50%;
+}
+
+.window-sill {
+    position: absolute;
+
+    left: -4%;
+    right: -4%;
+    bottom: -6%;
+
+    height: 8%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #24221d,
+            #0c0d0c
+        );
+
+    box-shadow:
+        0 12px 20px
+        rgba(0,0,0,.4);
+}
+
+
+
+/* FIREPLACE */
+
+.fireplace-area {
+    position: absolute;
+
+    right: 10%;
+    bottom: 21%;
+
+    width: min(31vw, 430px);
+    height: 55vh;
+}
+
+.fireplace {
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+
+    height: 72%;
+
+    background:
+        linear-gradient(
+            to right,
+            #181613,
+            #29221b 45%,
+            #141310
+        );
+
+    box-shadow:
+        inset 10px 0 28px
+        rgba(0,0,0,.35),
+
+        0 14px 42px
+        rgba(0,0,0,.45);
+}
+
+.fireplace-top {
+    position: absolute;
+
+    left: -8%;
+    right: -8%;
+    top: -7%;
+
+    height: 9%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #332a20,
+            #171512
+        );
+}
+
+.fireplace-opening {
+    position: absolute;
+
+    left: 17%;
+    right: 17%;
+    bottom: 12%;
+
+    height: 54%;
+
+    overflow: hidden;
+
+    border-radius:
+        50% 50% 5% 5%
+        / 24% 24% 5% 5%;
+
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #2e160b,
+            #090605 68%
+        );
+
+    box-shadow:
+        inset 0 5px 14px
+        rgba(0,0,0,.8);
+}
+
+.fire-glow {
+    position: absolute;
+
+    width: 130%;
+    height: 130%;
+
+    left: -15%;
+    bottom: -55%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(236,116,45,.45),
+            rgba(182,72,32,.14) 42%,
+            transparent 70%
+        );
+
+    filter: blur(18px);
+
+    animation:
+        fireGlow 2.8s ease-in-out infinite alternate;
+}
+
+.logs {
+    position: absolute;
+
+    left: 20%;
+    right: 20%;
+    bottom: 9%;
+
+    height: 17%;
+}
+
+.log {
+    position: absolute;
+
+    width: 65%;
+    height: 10px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #4b2814,
+            #1b0e08
+        );
+}
+
+.log-one {
+    left: 0;
+
+    transform: rotate(8deg);
+}
+
+.log-two {
+    right: 0;
+
+    transform: rotate(-10deg);
+}
+
+.log-three {
+    left: 18%;
+    bottom: 5px;
+
+    transform: rotate(2deg);
+}
+
+.fire {
+    position: absolute;
+
+    left: 30%;
+    right: 30%;
+    bottom: 15%;
+
+    height: 55%;
+}
+
+.flame {
+    position: absolute;
+
+    bottom: 0;
+
+    border-radius:
+        50% 50% 48% 52%
+        / 65% 65% 35% 35%;
+
+    transform-origin: center bottom;
+
+    background:
+        radial-gradient(
+            ellipse at bottom,
+            #ffd07b,
+            #df7c31 43%,
+            #a53c20 76%,
+            transparent 78%
+        );
+
+    filter: blur(.5px);
+
+    animation:
+        flameMove 1.1s ease-in-out infinite alternate;
+}
+
+.flame-one {
+    width: 48%;
+    height: 92%;
+
+    left: 12%;
+}
+
+.flame-two {
+    width: 40%;
+    height: 72%;
+
+    right: 7%;
+
+    animation-delay: -.4s;
+}
+
+.flame-three {
+    width: 34%;
+    height: 55%;
+
+    left: 42%;
+
+    animation-delay: -.7s;
+}
+
+.fire-floor-glow {
+    position: absolute;
+
+    width: 130%;
+    height: 38%;
+
+    left: -15%;
+    bottom: -16%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(172,86,38,.18),
+            transparent 70%
+        );
+
+    filter: blur(12px);
+}
+
+
+
+/* FURNITURE */
+
+.chair {
+    position: absolute;
+
+    left: 43%;
+    bottom: 18%;
+
+    width: 14%;
+    height: 36%;
+
+    opacity: .92;
+}
+
+.chair-back {
+    position: absolute;
+
+    left: 18%;
+    right: 18%;
+    top: 0;
+
+    height: 62%;
+
+    border-radius: 12px 12px 4px 4px;
+
+    background:
+        #080908;
+
+    transform: skewX(-4deg);
+}
+
+.chair-seat {
+    position: absolute;
+
+    left: 8%;
+    right: 5%;
+    bottom: 23%;
+
+    height: 18%;
+
+    background:
+        #0a0b0a;
+
+    transform: perspective(200px) rotateX(25deg);
+}
+
+.chair-leg {
+    position: absolute;
+
+    width: 5px;
+    height: 28%;
+
+    bottom: 0;
+
+    background:
+        #060706;
+}
+
+.chair-leg-left {
+    left: 23%;
+}
+
+.chair-leg-right {
+    right: 22%;
+}
+
+.side-table {
+    position: absolute;
+
+    left: 35%;
+    bottom: 20%;
+
+    width: 9%;
+    height: 22%;
+
+    opacity: .8;
+}
+
+.table-top {
+    width: 100%;
+    height: 8%;
+
+    background:
+        #0e0f0e;
+}
+
+.table-leg {
+    position: absolute;
+
+    width: 7%;
+    height: 92%;
+
+    left: 48%;
+
+    background:
+        #080908;
+}
+
+
+
+/* FLOOR */
+
+.interior-floor {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 25%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #11100e,
+            #080807
+        );
+}
+
+.floor-board {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        rgba(90,72,55,.12);
+
+    transform-origin: top;
+}
+
+.floor-board-one {
+    left: 17%;
+
+    transform: rotate(7deg);
+}
+
+.floor-board-two {
+    left: 38%;
+
+    transform: rotate(3deg);
+}
+
+.floor-board-three {
+    right: 36%;
+
+    transform: rotate(-3deg);
+}
+
+.floor-board-four {
+    right: 14%;
+
+    transform: rotate(-8deg);
+}
+
+.interior-edge-shadow {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 23%;
+
+    pointer-events: none;
+}
+
+.edge-left {
+    left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(0,0,0,.65),
+            transparent
+        );
+}
+
+.edge-right {
+    right: 0;
+
+    background:
+        linear-gradient(
+            to left,
+            rgba(0,0,0,.58),
+            transparent
+        );
+}
+
+
+
+/* ============================================================
+   17. LAKE
+   ============================================================ */
+
+#lake-scene {
+    z-index: 20;
+}
+
+.lake-sky-haze {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 38%;
+
+    height: 36%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(116,137,149,.1),
+            transparent 67%
+        );
+
+    filter: blur(18px);
+}
+
+.lake-horizon {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 48%;
+
+    height: 14%;
+
+    z-index: 2;
+}
+
+.distant-hill {
+    position: absolute;
+
+    bottom: 0;
+
+    height: 85%;
+
+    background:
+        #05090c;
+
+    filter: blur(1px);
+}
+
+.distant-hill-one {
+    left: -6%;
+    width: 48%;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 65%,
+            12% 48%,
+            27% 57%,
+            40% 28%,
+            58% 50%,
+            72% 42%,
+            100% 68%,
+            100% 100%
+        );
+}
+
+.distant-hill-two {
+    left: 27%;
+    width: 51%;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 63%,
+            18% 46%,
+            36% 57%,
+            53% 31%,
+            69% 51%,
+            82% 37%,
+            100% 64%,
+            100% 100%
+        );
+}
+
+.distant-hill-three {
+    right: -6%;
+    width: 42%;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 62%,
+            22% 38%,
+            40% 54%,
+            62% 35%,
+            100% 64%,
+            100% 100%
+        );
+}
+
+.far-shore {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 55%;
+
+    height: 10%;
+
+    z-index: 4;
+
+    background:
+        rgba(2,5,7,.85);
+}
+
+.shore-tree {
+    position: absolute;
+
+    bottom: 40%;
+
+    width: 5%;
+    height: 120%;
+
+    background:
+        #020506;
+
+    clip-path:
+        polygon(
+            50% 0,
+            35% 34%,
+            65% 32%,
+            20% 63%,
+            80% 60%,
+            43% 100%,
+            57% 100%
+        );
+}
+
+.shore-tree-1 { left: 6%; }
+.shore-tree-2 { left: 19%; transform: scale(.65); }
+.shore-tree-3 { left: 31%; transform: scale(.82); }
+.shore-tree-4 { right: 19%; transform: scale(.71); }
+.shore-tree-5 { right: 5%; }
+
+
+
+/* LAKE WATER */
+
+.lake-water {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 46%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #09131a 0%,
+            #071017 27%,
+            #04090d 66%,
+            #020507 100%
+        );
+}
+
+.water-gradient {
+    position: absolute;
+    inset: 0;
+
+    opacity: .7;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 10px,
+            rgba(178,196,206,.018) 10px 11px,
+            transparent 11px 18px
+        );
+}
+
+.moon-reflection {
+    position: absolute;
+
+    left: 63%;
+    top: -6%;
+
+    width: 20%;
+    height: 110%;
+
+    transform: translateX(-50%);
+
+    filter: blur(1px);
+}
+
+.reflection-core {
+    position: absolute;
+
+    left: 32%;
+    width: 36%;
+    top: 0;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(198,216,226,.19),
+            rgba(164,188,202,.08) 40%,
+            transparent 93%
+        );
+
+    filter: blur(10px);
+}
+
+.reflection-streak {
+    position: absolute;
+
+    left: 50%;
+
+    height: 2px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(197,214,223,.16);
+
+    filter: blur(.3px);
+
+    animation:
+        reflectionShift 5s ease-in-out infinite alternate;
+}
+
+.streak-1 {
+    top: 8%;
+    width: 22%;
+}
+
+.streak-2 {
+    top: 20%;
+    width: 47%;
+    left: 34%;
+}
+
+.streak-3 {
+    top: 34%;
+    width: 66%;
+    left: 18%;
+}
+
+.streak-4 {
+    top: 49%;
+    width: 38%;
+    left: 31%;
+}
+
+.streak-5 {
+    top: 65%;
+    width: 81%;
+    left: 7%;
+}
+
+.streak-6 {
+    top: 81%;
+    width: 49%;
+    left: 26%;
+}
+
+
+
+/* RIPPLES */
+
+.water-ripple {
+    position: absolute;
+
+    height: 1px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(126,151,164,.09);
+
+    filter: blur(.4px);
+
+    animation:
+        waterDrift 8s ease-in-out infinite alternate;
+}
+
+.ripple-one {
+    left: 12%;
+    top: 22%;
+
+    width: 25%;
+}
+
+.ripple-two {
+    right: 8%;
+    top: 35%;
+
+    width: 33%;
+}
+
+.ripple-three {
+    left: 30%;
+    top: 62%;
+
+    width: 42%;
+}
+
+.ripple-four {
+    left: 6%;
+    bottom: 12%;
+
+    width: 61%;
+}
+
+
+
+/* LAKE MIST */
+
+.lake-mist {
+    position: absolute;
+
+    left: -15%;
+
+    width: 130%;
+    height: 20%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(139,154,162,.1),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    z-index: 8;
+}
+
+.lake-mist-one {
+    top: 50%;
+
+    animation:
+        lakeMist 22s ease-in-out infinite alternate;
+}
+
+.lake-mist-two {
+    top: 59%;
+
+    opacity: .6;
+
+    animation:
+        lakeMist 29s ease-in-out infinite alternate-reverse;
+}
+
+
+
+/* NEAR SHORE */
+
+.near-shore {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 14%;
+
+    z-index: 9;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #010303 50%
+        );
+}
+
+.shore-rock {
+    position: absolute;
+
+    bottom: 30%;
+
+    border-radius:
+        53% 44% 36% 58%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #111719,
+            #030506
+        );
+}
+
+.rock-one {
+    left: 7%;
+
+    width: 12%;
+    height: 40%;
+}
+
+.rock-two {
+    right: 13%;
+
+    width: 8%;
+    height: 28%;
+}
+
+.shore-grass {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 20%;
+    height: 80%;
+
+    background:
+        repeating-linear-gradient(
+            77deg,
+            transparent 0 11px,
+            #020404 11px 14px,
+            transparent 14px 22px
+        );
+}
+
+.shore-grass-left {
+    left: 0;
+}
+
+.shore-grass-right {
+    right: 0;
+
+    transform: scaleX(-1);
+}
+
+
+
+/* FOREGROUND BRANCH */
+
+.lake-foreground-branch {
+    position: absolute;
+
+    width: 47%;
+    height: 12px;
+
+    left: -8%;
+    top: 12%;
+
+    z-index: 15;
+
+    border-radius: 50%;
+
+    background:
+        #010203;
+
+    transform: rotate(10deg);
+
+    filter: blur(.7px);
+}
+
+.lake-foreground-branch span {
+    position: absolute;
+
+    height: 6px;
+
+    background:
+        #010203;
+
+    border-radius: 50%;
+
+    transform-origin: left center;
+}
+
+.lake-branch-one {
+    width: 45%;
+
+    left: 24%;
+    top: 0;
+
+    transform: rotate(28deg);
+}
+
+.lake-branch-two {
+    width: 40%;
+
+    left: 47%;
+    top: 0;
+
+    transform: rotate(-25deg);
+}
+
+.lake-branch-three {
+    width: 30%;
+
+    left: 64%;
+    top: 0;
+
+    transform: rotate(17deg);
+}
+
+
+
+/* ============================================================
+   18. CLEARING
+   ============================================================ */
+
+#clearing-scene {
+    z-index: 20;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(55,76,91,.11),
+            transparent 44%
+        );
+}
+
+.clearing-horizon-glow {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 14%;
+
+    height: 35%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(82,106,121,.08),
+            transparent 68%
+        );
+
+    filter: blur(20px);
+}
+
+.clearing-tree-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 9%;
+
+    height: 25%;
+
+    opacity: .9;
+}
+
+.clearing-tree {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 8%;
+    height: 100%;
+
+    background:
+        #010304;
+
+    clip-path:
+        polygon(
+            50% 0,
+            37% 29%,
+            63% 28%,
+            25% 55%,
+            75% 52%,
+            14% 80%,
+            86% 76%,
+            58% 100%,
+            42% 100%
+        );
+}
+
+.clearing-tree.tree-1 {
+    left: -1%;
+}
+
+.clearing-tree.tree-2 {
+    left: 9%;
+
+    transform: scale(.68);
+}
+
+.clearing-tree.tree-3 {
+    left: 20%;
+
+    transform: scale(.49);
+}
+
+.clearing-tree.tree-4 {
+    right: 20%;
+
+    transform: scale(.54);
+}
+
+.clearing-tree.tree-5 {
+    right: 9%;
+
+    transform: scale(.72);
+}
+
+.clearing-tree.tree-6 {
+    right: -1%;
+}
+
+.clearing-ground {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 12%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(3,7,8,.72),
+            #010203
+        );
+}
+
+.clearing-sky-glow {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(149,176,191,.035),
+            transparent 60%
+        );
+}
+
+
+
+/* ============================================================
+   19. MEMORY STARS
+   ============================================================ */
+
+#memory-stars {
+    position: absolute;
+    inset: 0;
+
+    z-index: 7;
+}
+
+.memory-star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(227,237,242,.92);
+
+    box-shadow:
+        0 0 5px
+        rgba(208,228,239,.4);
+
+    opacity: 0;
+
+    transform: scale(.3);
+
+    transition:
+        opacity 2.4s ease,
+        transform 2.8s ease,
+        box-shadow 3s ease;
+}
+
+.memory-star.large {
+    width: 3px;
+    height: 3px;
+
+    box-shadow:
+        0 0 8px
+        rgba(220,237,245,.6),
+        0 0 18px
+        rgba(187,216,231,.22);
+}
+
+.memory-star.visible {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+
+/* ============================================================
+   20. FOG
+   ============================================================ */
+
+#fog {
+    position: fixed;
+    inset: 0;
+
+    z-index: 110;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    opacity: .45;
+
+    transition:
+        opacity 5s ease;
+}
+
+#fog.heavy {
+    opacity: 1;
+}
+
+.fog-bank {
+    position: absolute;
+
+    width: 100vw;
+    height: 55vh;
+
+    min-width: 900px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(116,130,140,.17),
+            rgba(74,86,96,.08) 46%,
+            transparent 73%
+        );
+
+    filter: blur(42px);
+
+    mix-blend-mode: screen;
+}
+
+.fog-bank-one {
+    left: -35%;
+    top: 10%;
+
+    animation:
+        fogFlow 22s ease-in-out infinite alternate;
+}
+
+.fog-bank-two {
+    left: 35%;
+    top: 28%;
+
+    animation:
+        fogFlowReverse 28s ease-in-out infinite alternate;
+}
+
+.fog-bank-three {
+    left: -12%;
+    bottom: -15%;
+
+    opacity: .78;
+
+    animation:
+        fogFlow 34s ease-in-out infinite alternate-reverse;
+}
+
+.fog-bank-four {
+    right: -32%;
+    top: 5%;
+
+    opacity: .55;
+
+    animation:
+        fogFlowReverse 40s ease-in-out infinite alternate-reverse;
+}
+
+
+
+/* ============================================================
+   21. RAIN
+   ============================================================ */
+
+#rain {
+    position: fixed;
+    inset: -10%;
+
+    z-index: 150;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    opacity: .62;
+
+    transition:
+        opacity 3.5s ease;
+
+    transform:
+        rotate(5deg)
+        scale(1.15);
+}
+
+.rain-drop {
+    position: absolute;
+
+    top: -15%;
+
+    width: 1px;
+
+    height:
+        var(--drop-length, 80px);
+
+    opacity:
+        var(--drop-opacity, .3);
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(185,205,216,.52)
+        );
+
+    filter:
+        blur(.15px);
+
+    animation:
+        rainFall
+        var(--drop-speed, 1s)
+        linear
+        var(--drop-delay, 0s)
+        infinite;
+}
+
+#rain::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .2;
+
+    background:
+        repeating-linear-gradient(
+            92deg,
+            transparent 0 11px,
+            rgba(202,218,226,.055) 11px 12px,
+            transparent 12px 28px
+        );
+
+    filter: blur(1px);
+
+    animation:
+        foregroundRain .75s linear infinite;
+}
+
+
+
+/* ============================================================
+   22. WINDOW RAIN
+   ============================================================ */
+
+#window-rain {
+    position: fixed;
+    inset: 0;
+
+    z-index: 155;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    backdrop-filter: blur(0px);
+
+    transition:
+        opacity 2.5s ease;
+}
+
+#window-rain.active {
+    opacity: .8;
+
+    backdrop-filter: blur(.6px);
+}
+
+.window-drop {
+    position: absolute;
+
+    width:
+        var(--size, 3px);
+
+    height:
+        calc(
+            var(--size, 3px) * 2.6
+        );
+
+    border-radius: 50% 50% 58% 58%;
+
+    background:
+        linear-gradient(
+            130deg,
+            rgba(255,255,255,.23),
+            rgba(169,192,203,.07)
+        );
+
+    box-shadow:
+        inset 1px 0 1px
+        rgba(255,255,255,.16),
+
+        0 0 2px
+        rgba(220,235,241,.1);
+
+    filter: blur(.15px);
+
+    animation:
+        glassDrop
+        var(--duration, 9s)
+        linear
+        var(--delay, 0s)
+        infinite;
+}
+
+
+
+/* ============================================================
+   23. LIGHTNING
+   ============================================================ */
+
+#lightning {
+    position: fixed;
+    inset: 0;
+
+    z-index: 170;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(210,225,235,.22),
+            rgba(148,173,189,.08)
+        );
+}
+
+#lightning.flash {
+    animation:
+        lightningFlash .7s ease-out;
+}
+
+body.thunder-shake #world {
+    animation:
+        thunderShake .45s ease-out;
+}
+
+
+
+/* ============================================================
+   24. SUNRISE
+   ============================================================ */
+
+#sunrise {
+    position: fixed;
+    inset: 0;
+
+    z-index: 105;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 14s ease;
+}
+
+#sunrise.active {
+    opacity: 1;
+}
+
+.sunrise-horizon {
+    position: absolute;
+
+    left: -10%;
+    right: -10%;
+    bottom: -5%;
+
+    height: 55%;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            rgba(205,146,104,.2),
+            rgba(117,103,95,.1) 30%,
+            transparent 67%
+        );
+
+    filter: blur(22px);
+}
+
+.sunrise-light {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(172,129,98,.12),
+            rgba(98,104,108,.035) 40%,
+            transparent 70%
+        );
+}
+
+
+
+/* ============================================================
+   25. STORY TEXT
+   ============================================================ */
+
+#story-layer {
+    position: fixed;
+    inset: 0;
+
+    z-index: 500;
+
+    pointer-events: none;
+}
+
+.story-moment {
+    position: absolute;
+
+    left: 50%;
+    top: 51%;
+
+    width:
+        min(82vw, 920px);
+
+    transform:
+        translate(-50%, -42%)
+        translateY(16px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 11px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    filter: blur(5px);
+
+    visibility: hidden;
+
+    transition:
+        opacity 1.8s ease,
+        transform 2.1s cubic-bezier(.2,.7,.2,1),
+        filter 2s ease,
+        visibility 2s ease;
+}
+
+.story-moment.active {
+    opacity: 1;
+
+    filter: blur(0);
+
+    visibility: visible;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(0);
+}
+
+.story-line {
+    display: block;
+
+    max-width: 900px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.55rem, 3vw, 3rem);
+
+    font-weight: 400;
+
+    line-height: 1.34;
+
+    letter-spacing: -0.018em;
+
+    color:
+        rgba(238,242,244,.93);
+
+    text-shadow:
+        0 3px 18px
+        rgba(0,0,0,.82),
+
+        0 0 35px
+        rgba(0,0,0,.7);
+}
+
+.story-line.small {
+    margin-top: 4px;
+
+    font-family:
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(.88rem, 1.25vw, 1.12rem);
+
+    font-weight: 300;
+
+    line-height: 1.6;
+
+    letter-spacing: .035em;
+
+    color:
+        rgba(213,220,224,.62);
+}
+
+.story-line.large {
+    font-size:
+        clamp(2.2rem, 5vw, 5rem);
+}
+
+.story-line.whisper {
+    font-size:
+        clamp(1.25rem, 2vw, 2rem);
+
+    font-style: italic;
+
+    color:
+        rgba(223,229,232,.73);
+}
+
+.story-line.warm {
+    color:
+        rgba(238,220,201,.9);
+
+    text-shadow:
+        0 3px 20px
+        rgba(0,0,0,.8),
+
+        0 0 25px
+        rgba(192,124,73,.12);
+}
+
+.moon-label {
+    margin-bottom: 10px;
+
+    font-size: .59rem;
+
+    font-weight: 500;
+
+    letter-spacing: .48em;
+
+    color:
+        rgba(190,205,214,.54);
+}
+
+
+
+/* ============================================================
+   26. FLOATING MEMORY WORDS
+   ============================================================ */
+
+#floating-words {
+    position: fixed;
+    inset: 0;
+
+    z-index: 390;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.memory-word {
+    position: absolute;
+
+    padding:
+        6px 12px;
+
+    white-space: nowrap;
+
+    border-radius: 999px;
+
+    color:
+        rgba(220,229,233,.5);
+
+    font-size:
+        clamp(.69rem, 1vw, .88rem);
+
+    letter-spacing: .09em;
+
+    text-shadow:
+        0 0 16px
+        rgba(197,218,229,.12);
+
+    background:
+        rgba(126,150,164,.015);
+
+    backdrop-filter: blur(3px);
+
+    animation:
+        memoryFloat
+        8s
+        ease-in-out
+        forwards;
+}
+
+
+
+/* ============================================================
+   27. ACTIVITIES
+   ============================================================ */
+
+#activity-layer {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1200;
+
+    pointer-events: none;
+}
+
+.activity {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,12,16,.35),
+            rgba(1,3,4,.88)
+        );
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:
+        opacity 1.4s ease,
+        visibility 1.4s ease;
+}
+
+.activity.active {
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.activity-card {
+    width:
+        min(88vw, 580px);
+
+    min-height: 400px;
+
+    padding:
+        clamp(30px, 5vw, 58px);
+
+    border:
+        1px solid
+        rgba(208,218,223,.1);
+
+    border-radius: 26px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21,27,31,.7),
+            rgba(8,12,15,.78)
+        );
+
+    box-shadow:
+        0 40px 120px
+        rgba(0,0,0,.6),
+
+        inset 0 1px
+        rgba(255,255,255,.025);
+
+    backdrop-filter:
+        blur(26px);
+}
+
+.activity-kicker {
+    font-size: .56rem;
+
+    letter-spacing: .42em;
+
+    color:
+        rgba(193,207,215,.38);
+
+    margin-bottom: 15px;
+}
+
+.activity-title {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.8rem, 3vw, 3rem);
+
+    font-weight: 400;
+
+    color:
+        rgba(241,244,245,.92);
+}
+
+.activity-subtitle {
+    margin-top: 15px;
+
+    font-size: .84rem;
+
+    font-weight: 300;
+
+    line-height: 1.7;
+
+    color:
+        rgba(206,216,221,.5);
+}
+
+
+
+/* ============================================================
+   28. DODGE CHARGER
+   ============================================================ */
+
+.charger-stage {
+    position: relative;
+
+    height: 150px;
+
+    margin-top: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dodge-charger-object {
+    position: relative;
+
+    width: 100px;
+    height: 75px;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(177,203,216,.1)
+        );
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+}
+
+#dodge-charger-object:hover {
+    transform:
+        scale(1.07)
+        rotate(-2deg);
+
+    filter:
+        drop-shadow(
+            0 0 28px
+            rgba(194,219,232,.19)
+        );
+}
+
+.charger-brick {
+    position: absolute;
+
+    width: 52px;
+    height: 67px;
+
+    left: 20px;
+    top: 3px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a1c1e,
+            #08090a 70%
+        );
+
+    box-shadow:
+        inset 1px 1px 2px
+        rgba(255,255,255,.06),
+
+        0 7px 14px
+        rgba(0,0,0,.5);
+}
+
+.charger-word {
+    position: absolute;
+
+    left: 50%;
+    top: 51%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-90deg);
+
+    color:
+        rgba(219,223,225,.55);
+
+    font-size: .54rem;
+
+    letter-spacing: .18em;
+}
+
+.charger-metal {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    left: 37px;
+    top: -10px;
+
+    border-radius: 2px 2px 0 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #6f7576,
+            #c1c5c4,
+            #555b5c
+        );
+}
+
+.charger-cable {
+    position: absolute;
+
+    width: 95px;
+    height: 60px;
+
+    left: -37px;
+    top: 33px;
+
+    border:
+        3px solid
+        #080909;
+
+    border-top-color: transparent;
+    border-right-color: transparent;
+
+    border-radius:
+        0 0 0 70px;
+
+    transform: rotate(-12deg);
+}
+
+.dodge-reveal {
+    min-height: 42px;
+
+    margin-top: 14px;
+
+    opacity: 0;
+
+    transform: translateY(7px);
+
+    font-size: .9rem;
+
+    color:
+        rgba(231,235,237,.7);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.dodge-reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* ============================================================
+   29. MHMM
+   ============================================================ */
+
+.mhmm-arena {
+    position: relative;
+
+    width: 100%;
+    height: 155px;
+
+    margin:
+        25px auto
+        17px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(213,223,228,.07);
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(88,111,124,.06),
+            rgba(4,7,9,.45)
+        );
+}
+
+.mhmm-button {
+    padding:
+        12px 26px;
+
+    border:
+        1px solid
+        rgba(216,225,229,.17);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:
+        rgba(231,237,240,.77);
+
+    cursor: pointer;
+
+    font-size: .79rem;
+
+    letter-spacing: .08em;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .25s ease;
+}
+
+.mhmm-button:hover {
+    background:
+        rgba(255,255,255,.055);
+
+    border-color:
+        rgba(218,229,234,.32);
+
+    transform: translateY(-1px);
+}
+
+.mhmm-button:active {
+    transform: scale(.96);
+}
+
+.mhmm-button:disabled {
+    cursor: default;
+    opacity: .55;
+}
+
+.mhmm-score {
+    margin-top: 14px;
+
+    font-size: .67rem;
+
+    letter-spacing: .08em;
+
+    color:
+        rgba(204,214,219,.42);
+}
+
+.mhmm-word {
+    position: absolute;
+
+    color:
+        rgba(224,232,236,.68);
+
+    font-family:
+        Georgia,
+        serif;
+
+    animation:
+        mhmmAppear 2.2s ease forwards;
+}
+
+
+
+/* ============================================================
+   30. DARKNESS
+   ============================================================ */
+
+#darkness {
+    position: fixed;
+    inset: 0;
+
+    z-index: 5000;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        #010203;
+
+    transition:
+        opacity 2.5s ease;
+}
+
+#darkness.active {
+    opacity: 1;
+}
+
+
+
+/* ============================================================
+   31. ENDING
+   ============================================================ */
+
+#ending {
+    position: fixed;
+    inset: 0;
+
+    z-index: 6000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(47,60,69,.13),
+            #010203 58%
+        );
+
+    transition:
+        opacity 3s ease,
+        visibility 3s ease;
+}
+
+#ending.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ending-glow {
+    position: absolute;
+
+    width: 50vw;
+    height: 50vw;
+
+    min-width: 500px;
+    min-height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(174,195,206,.07),
+            transparent 65%
+        );
+
+    filter: blur(20px);
+}
+
+.ending-content {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+}
+
+.ending-kicker {
+    margin-bottom: 14px;
+
+    font-size: .58rem;
+
+    letter-spacing: .4em;
+
+    color:
+        rgba(197,210,217,.36);
+}
+
+.ending-number {
+    display: block;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(6.5rem, 15vw, 14rem);
+
+    font-weight: 400;
+
+    line-height: .86;
+
+    letter-spacing: -.07em;
+
+    color:
+        rgba(235,240,242,.94);
+
+    text-shadow:
+        0 0 40px
+        rgba(181,204,216,.07);
+}
+
+.ending-months {
+    margin-top: 15px;
+
+    font-size: .7rem;
+
+    letter-spacing: .52em;
+
+    color:
+        rgba(208,219,224,.51);
+}
+
+.ending-divider {
+    width: 32px;
+    height: 1px;
+
+    margin:
+        25px auto;
+
+    background:
+        rgba(223,230,233,.22);
+}
+
+.ending-line {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.15rem, 2vw, 1.65rem);
+
+    font-style: italic;
+
+    color:
+        rgba(218,226,230,.58);
+}
+
+.final-chaos {
+    margin-top: 30px;
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    font-size:
+        clamp(.8rem, 1.7vw, 1rem);
+
+    letter-spacing: .08em;
+
+    color:
+        rgba(232,235,237,.75);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.final-chaos.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+
+/* ============================================================
+   32. STILL AWAKE
+   ============================================================ */
+
+#still-awake {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    z-index: 7000;
+
+    width: 90%;
+
+    transform:
+        translate(-50%,-50%)
+        translateY(10px);
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    color:
+        rgba(210,218,222,.45);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-size:
+        clamp(.9rem, 1.5vw, 1.1rem);
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease,
+        visibility 2s ease;
+}
+
+#still-awake.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%,-50%)
+        translateY(0);
+}
+
+
+
+/* ============================================================
+   33. CINEMATIC OVERLAYS
+   ============================================================ */
+
+#cinematic-bars {
+    position: fixed;
+    inset: 0;
+
+    z-index: 8000;
+
+    pointer-events: none;
+}
+
+.cinematic-bar {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: clamp(12px, 2.2vh, 30px);
+
+    background:
+        #010203;
+}
+
+.cinematic-bar-top {
+    top: 0;
+}
+
+.cinematic-bar-bottom {
+    bottom: 0;
+}
+
+#lens-softness {
+    position: fixed;
+    inset: 0;
+
+    z-index: 8100;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 50%,
+            rgba(0,0,0,.12) 82%,
+            rgba(0,0,0,.25) 100%
+        );
+}
+
+#vignette {
+    position: fixed;
+    inset: 0;
+
+    z-index: 8200;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            rgba(0,0,0,.16) 66%,
+            rgba(0,0,0,.53) 100%
+        );
+}
+
+#film-grain {
+    position: fixed;
+    inset: -50%;
+
+    z-index: 8300;
+
+    pointer-events: none;
+
+    opacity: .05;
+
+    background-image:
+        repeating-radial-gradient(
+            circle at 0 0,
+            transparent 0,
+            rgba(255,255,255,.6) 1px,
+            transparent 2px
+        );
+
+    background-size:
+        5px 5px;
+
+    animation:
+        grainMove .25s steps(2) infinite;
+}
+
+
+
+/* ============================================================
+   34. SOUND BUTTON
+   ============================================================ */
+
+#sound-toggle {
+    position: fixed;
+
+    right: 25px;
+    bottom: 28px;
+
+    z-index: 9000;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(214,224,229,.1);
+
+    border-radius: 50%;
+
+    background:
+        rgba(5,9,12,.28);
+
+    color:
+        rgba(222,230,234,.56);
+
+    backdrop-filter:
+        blur(16px);
+
+    cursor: pointer;
+
+    font-size: .84rem;
+
+    transition:
+        color .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        transform .35s ease;
+}
+
+#sound-toggle:hover {
+    transform: scale(1.06);
+
+    color:
+        rgba(241,245,247,.85);
+
+    border-color:
+        rgba(226,235,239,.22);
+
+    background:
+        rgba(18,25,29,.45);
+}
+
+
+
+/* ============================================================
+   35. CAMERA STATES
+   ============================================================ */
+
+#world.camera-road {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.055)
+        translateY(0.4%);
+}
+
+#world.camera-fog {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.09)
+        translateY(-1%);
+}
+
+#world.camera-forest {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.08)
+        translateY(-1.5%);
+}
+
+#world.camera-cabin {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.12)
+        translateY(-1%);
+}
+
+#world.camera-lake {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.06)
+        translateY(-1%);
+}
+
+#world.camera-clearing {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.035)
+        translateY(0);
+}
+
+#world.camera-moon {
+    transform:
+        translate(
+            var(--ambient-x),
+            var(--ambient-y)
+        )
+        scale(1.12)
+        translateY(1%);
+}
+
+#world.camera-moon .moon-wrap {
+    width:
+        clamp(300px, 46vw, 650px);
+
+    right: 50%;
+    top: 50%;
+
+    transform:
+        translate(50%, -50%);
+}
+
+#world.camera-moon .moon-halo-wide {
+    opacity: .75;
+}
+
+
+
+/* ============================================================
+   36. KEYFRAMES
+   ============================================================ */
+
+@keyframes startCloudDrift {
+    from {
+        transform:
+            translateX(-10%);
+    }
+
+    to {
+        transform:
+            translateX(30%);
+    }
+}
+
+
+@keyframes subtleStars {
+    from {
+        opacity: .39;
+    }
+
+    to {
+        opacity: .62;
+    }
+}
+
+
+@keyframes cloudDrift {
+    from {
+        transform:
+            translateX(-12%)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateX(55%)
+            scale(1.08);
+    }
+}
+
+
+@keyframes cloudDriftReverse {
+    from {
+        transform:
+            translateX(20%)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateX(-55%)
+            scale(1.1);
+    }
+}
+
+
+@keyframes mistMove {
+    from {
+        transform:
+            translateX(-6%)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateX(14%)
+            scale(1.1);
+    }
+}
+
+
+@keyframes floorFog {
+    from {
+        transform:
+            translateX(-10%)
+            scaleX(1);
+    }
+
+    to {
+        transform:
+            translateX(17%)
+            scaleX(1.1);
+    }
+}
+
+
+@keyframes smokeRise {
+    0% {
+        transform:
+            translateY(10px)
+            translateX(0)
+            scale(.7);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .35;
+    }
+
+    70% {
+        opacity: .13;
+    }
+
+    100% {
+        transform:
+            translateY(-85px)
+            translateX(28px)
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes warmWindowFlicker {
+    0% {
+        opacity: .75;
+    }
+
+    45% {
+        opacity: .9;
+    }
+
+    68% {
+        opacity: .82;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes fireGlow {
+    from {
+        opacity: .65;
+
+        transform:
+            scale(.96);
+    }
+
+    to {
+        opacity: .95;
+
+        transform:
+            scale(1.06);
+    }
+}
+
+
+@keyframes flameMove {
+    0% {
+        transform:
+            scaleX(.95)
+            scaleY(.95)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            scaleX(1.08)
+            scaleY(1.1)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            scaleX(.92)
+            scaleY(1.04)
+            rotate(-1deg);
+    }
+}
+
+
+@keyframes reflectionShift {
+    from {
+        transform:
+            translateX(-4px)
+            scaleX(.9);
+
+        opacity: .5;
+    }
+
+    to {
+        transform:
+            translateX(5px)
+            scaleX(1.12);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes waterDrift {
+    from {
+        transform:
+            translateX(-12px)
+            scaleX(.93);
+    }
+
+    to {
+        transform:
+            translateX(16px)
+            scaleX(1.08);
+    }
+}
+
+
+@keyframes lakeMist {
+    from {
+        transform:
+            translateX(-9%);
+    }
+
+    to {
+        transform:
+            translateX(11%);
+    }
+}
+
+
+@keyframes fogFlow {
+    from {
+        transform:
+            translate3d(-9%, 1%, 0)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate3d(18%, -4%, 0)
+            scale(1.16);
+    }
+}
+
+
+@keyframes fogFlowReverse {
+    from {
+        transform:
+            translate3d(16%, -2%, 0)
+            scale(1.08);
+    }
+
+    to {
+        transform:
+            translate3d(-18%, 6%, 0)
+            scale(.96);
+    }
+}
+
+
+@keyframes rainFall {
+    0% {
+        transform:
+            translate3d(
+                0,
+                -20vh,
+                0
+            );
+    }
+
+    100% {
+        transform:
+            translate3d(
+                -12vw,
+                135vh,
+                0
+            );
+    }
+}
+
+
+@keyframes foregroundRain {
+    from {
+        transform:
+            translateY(-8%);
+    }
+
+    to {
+        transform:
+            translateY(8%);
+    }
+}
+
+
+@keyframes glassDrop {
+    0% {
+        transform:
+            translateY(-15vh)
+            scaleY(.75);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .65;
+    }
+
+    80% {
+        opacity: .45;
+    }
+
+    100% {
+        transform:
+            translateY(125vh)
+            scaleY(1.4);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes lightningFlash {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .48;
+    }
+
+    18% {
+        opacity: .08;
+    }
+
+    27% {
+        opacity: .35;
+    }
+
+    42% {
+        opacity: .04;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes thunderShake {
+    0% {
+        transform:
+            translate(
+                var(--ambient-x),
+                var(--ambient-y)
+            )
+            translateX(0)
+            scale(1.05);
+    }
+
+    25% {
+        transform:
+            translate(
+                var(--ambient-x),
+                var(--ambient-y)
+            )
+            translateX(-1px)
+            scale(1.05);
+    }
+
+    50% {
+        transform:
+            translate(
+                var(--ambient-x),
+                var(--ambient-y)
+            )
+            translateX(1px)
+            scale(1.05);
+    }
+
+    75% {
+        transform:
+            translate(
+                var(--ambient-x),
+                var(--ambient-y)
+            )
+            translateX(-.5px)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            translate(
+                var(--ambient-x),
+                var(--ambient-y)
+            )
+            translateX(0)
+            scale(1.05);
+    }
+}
+
+
+@keyframes memoryFloat {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(14px)
+            scale(.97);
+
+        filter: blur(5px);
+    }
+
+    18% {
+        opacity: .52;
+
+        filter: blur(0);
+    }
+
+    70% {
+        opacity: .35;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-22px)
+            scale(1.03);
+
+        filter: blur(4px);
+    }
+}
+
+
+@keyframes mhmmAppear {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(.82);
+
+        filter: blur(3px);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+
+    80% {
+        opacity: .65;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-25px)
+            scale(1.07);
+
+        filter: blur(3px);
+    }
+}
+
+
+@keyframes grainMove {
+    0% {
+        transform:
+            translate(0,0);
+    }
+
+    25% {
+        transform:
+            translate(2%, -3%);
+    }
+
+    50% {
+        transform:
+            translate(-3%, 2%);
+    }
+
+    75% {
+        transform:
+            translate(3%, 4%);
+    }
+
+    100% {
+        transform:
+            translate(-2%, -3%);
+    }
+}
+
+
+
+/* ============================================================
+   37. RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+    .moon-wrap {
+        right: 12%;
+        top: 10%;
+    }
+
+    .street-light {
+        transform:
+            scale(.8);
+
+        transform-origin: bottom center;
+    }
+
+    .light-left {
+        left: 3%;
+    }
+
+    .light-right {
+        right: 1%;
+
+        transform:
+            scaleX(-1)
+            scale(.7);
+    }
+
+    .cabin-wrap {
+        width: 70vw;
+    }
+
+    .window-area {
+        left: 5%;
+        width: 36vw;
+    }
+
+    .fireplace-area {
+        right: 5%;
+        width: 38vw;
+    }
+
+    .story-moment {
+        width: 86vw;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+
+    #world {
+        inset: -7%;
+
+        width: 114%;
+        height: 114%;
+    }
+
+    .start-title {
+        font-size:
+            clamp(3rem, 15vw, 4.7rem);
+    }
+
+    .start-subtitle {
+        font-size: .82rem;
+    }
+
+    .start-eyebrow {
+        font-size: .58rem;
+    }
+
+    .moon-wrap {
+        width: 105px;
+
+        right: 11%;
+        top: 10%;
+    }
+
+    .city-layer-mid {
+        transform: scaleX(1.3);
+    }
+
+    .city-layer-far {
+        transform: scaleX(1.45);
+    }
+
+    .road {
+        width: 93%;
+    }
+
+    .street-light {
+        height: 44vh;
+    }
+
+    .light-left {
+        left: -5%;
+    }
+
+    .light-right {
+        right: -7%;
+    }
+
+    .forest-layer {
+        transform: scaleX(1.18);
+    }
+
+    .cabin-wrap {
+        width: 88vw;
+
+        bottom: 13%;
+    }
+
+    .cabin {
+        left: 7%;
+        right: 7%;
+    }
+
+    .cabin-window {
+        width: 27%;
+    }
+
+    .window-area {
+        left: 5%;
+        top: 18%;
+
+        width: 43vw;
+        height: 36vh;
+    }
+
+    .fireplace-area {
+        right: 1%;
+
+        width: 47vw;
+        height: 42vh;
+    }
+
+    .chair {
+        display: none;
+    }
+
+    .side-table {
+        display: none;
+    }
+
+    .story-moment {
+        width: 87vw;
+
+        top: 50%;
+    }
+
+    .story-line {
+        font-size:
+            clamp(
+                1.35rem,
+                6.2vw,
+                2.1rem
+            );
+    }
+
+    .story-line.large {
+        font-size:
+            clamp(
+                2rem,
+                10vw,
+                3.3rem
+            );
+    }
+
+    .story-line.small {
+        font-size: .82rem;
+    }
+
+    .moon-label {
+        font-size: .52rem;
+    }
+
+    .activity-card {
+        min-height: 380px;
+
+        border-radius: 20px;
+    }
+
+    #world.camera-moon .moon-wrap {
+        width:
+            min(72vw, 430px);
+    }
+
+    #sound-toggle {
+        width: 38px;
+        height: 38px;
+
+        right: 17px;
+        bottom: 20px;
+    }
+
+    #cinematic-bars .cinematic-bar {
+        height: 12px;
+    }
+
+}
+
+
+
+/* ============================================================
+   38. REDUCED MOTION
+   ============================================================ */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            .001ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .001ms !important;
+    }
+
+}
